@@ -1,12 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import { BrowserRouter } from 'react-router-dom';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faBars, faCaretDown, faUser } from '@fortawesome/free-solid-svg-icons'
+
 import App from './App';
+
+import { Auth0Provider } from './services/auth0';
+import config from './services/auth0/config';
+import history from './services/history';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './styles.css';
+
+
+library.add(fab, faBars, faCaretDown, faUser);
+
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
+
+ReactDOM.render(
+  <Auth0Provider
+    audience={config.audience}
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Auth0Provider>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();

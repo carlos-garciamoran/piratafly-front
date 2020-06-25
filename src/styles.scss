@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+
+button:focus { @apply outline-none; }
+button[disabled] { @apply bg-gray-light; }
+
+footer {
+  @apply bg-gray-dark flex flex-col h-16 items-center justify-around py-2 text-sm
+         text-gray-lightest;
+}
+
+header {
+  @apply sticky top-0 w-full;
+  z-index: 1;
+}
+
+html { @apply bg-black; }
+
+h1 { @apply border-b border-black font-thin leading-tight mb-4 pb-2 tracking-wide
+            text-yellow text-2xl; }
+h2 { @apply mt-4 text-white text-2xl; }
+
+input[type=checkbox] { @apply mr-1; }
+input[type=text] {
+  @apply appearance-none border-2 border-gray-lighter leading-tight px-4 py-2
+         rounded;
+}
+input[type=text]:focus { @apply bg-gray-lightest border-yellow outline-none; }
+
+label { @apply block mt-3 text-sm text-yellow; }
+
+main {
+  @apply flex-grow w-full;
+  background: linear-gradient(150deg, black 15%, #bababa 90%);
+}
+
+nav {
+  @apply bg-black border-b border-gray-dark flex flex-wrap items-center
+         justify-between p-2 pl-4;
+}
+
+ol {
+  @apply flex font-medium sticky text-lg text-center text-gray-lightest;
+  top: 62px;
+  z-index: 1;
+}
+ol > li { @apply flex-1; }
+
+ul > li { @apply mt-1; }
+
+/* Previously had mt-4 */
+#banner { @apply bg-yellow p-4 shadow-lg; }
+#banner-title { @apply font-semibold mb-2; }
+
+#box {
+  @apply p-6;
+  background: linear-gradient(330deg, black 15%, #353535 100%);
+}
+
+#flight-info {
+  @apply border-t-2 border-yellow flex rounded-b p-4 shadow-lg;
+}
+
+#waiting-room {
+  @apply bg-black flex h-screen items-center justify-center;
+}
+
+.badge { @apply inline-block px-3 py-1 rounded-full text-sm; }
+
+.btn { @apply bg-yellow font-bold rounded text-black; }
+
+.btn-half { @apply btn ml-2 w-1/2; }
+.btn-main { @apply btn mt-6 py-3 w-full; }
+
+.container { max-width: 100%; }
+
+.error {
+  @apply border border-dashed flex flex-grow-0 font-bold mt-2 px-1 text-red-600
+         text-xs;
+}
+
+/* V1.1: substitute for nav > a selector (excluding donate link) */
+.nav-link { @apply mt-4 mr-4 text-yellow; }
+.nav-link:hover { @apply text-white; }
+
+
+/* 640 px: tablet  */
+@screen sm {
+  footer { @apply flex-row py-0; }
+  main { @apply px-16 py-4; }
+
+  #banner { @apply mb-4; }
+
+  .nav-link { @apply inline-block mt-0; }
+}
+
+/* 768 px: iPad */
+@screen md {
+  main { @apply px-24; }
+}
+
+/* 1024 px: iPad Pro / Laptop */
+@screen lg {
+  main { @apply px-48; }
+}
+
+/* 1280 px: large monitor */
+@screen xl {
+  main { @apply px-64; }
+}
+
+@tailwind utilities;
