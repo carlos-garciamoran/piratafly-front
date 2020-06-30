@@ -49,17 +49,20 @@ class FlightNumberForm extends React.Component {
           // that falls out of the range of 2xx
           err = err.response;
 
-          if (err.status === 400 || err.status === 429 || err.status === 503) {
-            // Miscellaneous error
-            this.setState({
-              errors: {'number': [err.data.message]}
-            });
-          } else if (err.status === 422) {
-            // Laravel validation error
-            this.setState({
-              errors: err.data.errors
-            });
-          }
+          // if (err.status === 400 || err.status === 429 || err.status === 503) {
+          //   // Miscellaneous error
+          //   this.setState({
+          //     errors: {'number': [err.data.message]}
+          //   });
+          // } else if (err.status === 422) {
+          //   // Laravel validation error
+          //   this.setState({
+          //     errors: err.data.errors
+          //   });
+          // }
+          this.setState({
+            errors: {'number': ['No hemos encontrado vuelos con ese número']}
+          });
           this.setState({ loading: false });
         } else {
           // The request was made but no response was received

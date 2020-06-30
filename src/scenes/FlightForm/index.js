@@ -47,7 +47,7 @@ class FlightForm extends React.Component {
   }
 
   handleSceneChange(data) {
-    console.log('SCENE CHANGE:', this.state.scene, data);
+    // console.log('SCENE CHANGE:', this.state.scene, data);
 
     switch (this.state.scene) {
       case 1:
