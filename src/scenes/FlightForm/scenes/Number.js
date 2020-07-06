@@ -44,6 +44,8 @@ class FlightNumberForm extends React.Component {
       })
       .then(({ data }) => this.props.onSceneChange(data.flights))
       .catch(err => {
+        this.setState({ loading: false });
+
         if (err.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -65,12 +67,8 @@ class FlightNumberForm extends React.Component {
           // `err.request` is an instance of XMLHttpRequest
           // Something happened in setting up the request that triggered an Error
           this.setState({
-            errors: {'number': ['No hemos encontrado vuelos con ese número']},
-            loading: false
+            errors: {'number': ['No hemos encontrado vuelos con ese número']}
           });
-          // this.setState({
-          //   errors: {'number': ['Ha habido un error inesperado...']}
-          // });
         }
       });
   }

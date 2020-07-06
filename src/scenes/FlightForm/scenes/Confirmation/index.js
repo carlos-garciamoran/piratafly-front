@@ -33,6 +33,8 @@ class ConfirmationForm extends React.Component {
       // V1.1: fade away on page change + add success message
       .then(this.props.history.push('/flights'))
       .catch(err => {
+        this.setState({ loading: false });
+
         if (err.response) { 
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -53,7 +55,6 @@ class ConfirmationForm extends React.Component {
               errors: {'terms': ['Ha habido un error inesperado...']}
             });
           }
-          this.setState({ loading: false });
         } else {
           // The request was made but no response was received
           // `err.request` is an instance of XMLHttpRequest
