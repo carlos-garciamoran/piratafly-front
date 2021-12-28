@@ -1,3 +1,8 @@
+# piratafly-front | v2.0
+Frontend of the PirataFly service
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
